@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets>
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>dc</Title>
+      <Shortcut>dc</Shortcut>
+      <Description>Delete Complete Case script</Description>
+      <Author />
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+    </Header>
+    <Snippet>
+      <Declarations />
+      <Code Language="sql"><![CDATA[/*
+	exec DeleteCompleteCase-$DATE(yyyyMMdd)$-$TIME(HHmmss)$-$PASTE$
+*/
+use HFNY
+go
+declare @PC1ID varchar(13)
+declare @HVCaseFK int
+declare @ProgramFK int
+declare @ok varchar(200) 
+
+-- Note: Also paste the PC1ID in the exec comment above to use in named file
+set @PC1ID = '$PASTE$$CURSOR$'  -- eg: BM99331273421
+
+select @HVCaseFK = cp.HVCaseFK
+		,@ProgramFK = ProgramFK
+from CaseProgram cp
+inner join HVCase h on h.HVCasePK = cp.HVCaseFK
+where PC1ID = @PC1ID
+
+exec pr_DeleteCompleteCase @HVCaseFK --int
+                          ,@ProgramFK --int
+                          ,@ok = '' --varchar(200)
+
+print 'PC1ID to be deleted: ' + @PC1ID
+print 'Deleted case FK: ' + convert(char, @HVCaseFK)
+print 'Program FK: ' + convert(char, @ProgramFK)
+print 'Result: ' + isnull(@ok, 'OK')
+]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

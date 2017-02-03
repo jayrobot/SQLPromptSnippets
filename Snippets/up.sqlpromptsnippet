@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets>
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>up</Title>
+      <Shortcut>up</Shortcut>
+      <Description>Update script which disables and re-enables triggers to inhibit Edit Date write</Description>
+      <Author />
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+    </Header>
+    <Snippet>
+      <Declarations />
+      <Code Language="sql"><![CDATA[declare @TableName varchar(max)
+set @TableName = '$CURSOR$'
+
+exec pr_Disable_Foreign_Keys @disable = 1, -- bit
+	@tableNames = @TableName -- nvarchar(max)
+
+update	$SELECTIONSTART$<tablename>$SELECTIONEND$
+set		$SELECTIONSTART$<column updates>$SELECTIONEND$
+where	$SELECTIONSTART$<where clause>$SELECTIONEND$
+
+exec pr_Disable_Foreign_Keys @disable = 0, -- bit
+	@tableNames = @TableName -- nvarchar(max)
+]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

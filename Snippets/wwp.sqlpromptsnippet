@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets>
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>wwp</Title>
+      <Shortcut>wwp</Shortcut>
+      <Description>Worker joined with WorkerProgram</Description>
+      <Author />
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+    </Header>
+    <Snippet>
+      <Declarations />
+      <Code Language="sql"><![CDATA[use HFNY
+go
+select *
+from Worker w
+inner join WorkerProgram wp on w.WorkerPK = wp.WorkerFK
+where LastName = '$CURSOR$']]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

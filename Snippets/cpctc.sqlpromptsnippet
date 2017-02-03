@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets>
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>cpctc</Title>
+      <Shortcut>cpctc</Shortcut>
+      <Description>Caseprogram HVCase TCID Snippet</Description>
+      <Author />
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+    </Header>
+    <Snippet>
+      <Declarations />
+      <Code Language="sql"><![CDATA[/*
+	exec case-query-$DATE(yyyyMMdd)$-$TIME(HHmmss)$
+*/
+use HFNY
+go
+select * 
+from TCID t
+inner join CaseProgram cp on t.HVCaseFK = cp.HVCaseFK
+inner join HVCase hc on hc.HVCasePK = cp.HVCaseFK
+where PC1ID = '$PASTE$$CURSOR$'
+]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

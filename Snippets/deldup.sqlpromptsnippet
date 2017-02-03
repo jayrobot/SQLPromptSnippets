@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets>
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>deldup</Title>
+      <Shortcut>deldup</Shortcut>
+      <Description>Block of code to identify and delete duplicate rows</Description>
+      <Author />
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+    </Header>
+    <Snippet>
+      <Declarations>
+        <Literal>
+          <ID>table</ID>
+          <ToolTip />
+          <Default />
+        </Literal>
+        <Literal>
+          <ID>dupfield1</ID>
+          <ToolTip />
+          <Default />
+        </Literal>
+        <Literal>
+          <ID>dupfield2</ID>
+          <ToolTip />
+          <Default />
+        </Literal>
+      </Declarations>
+      <Code Language="sql"><![CDATA[--#region $table$
+/*
+	$table$
+*/
+declare @del$table$Cursor cursor;
+
+set @del$table$Cursor = cursor for 
+	with cte$table$sToDelete as (
+		select $table$PK
+				, row_number() over(partition by HVCaseFK
+													, $dupfield1$
+													, $dupfield2$ 
+									order by $table$EditDate desc
+												, $table$CreateDate) as [RowNumber]
+		from $table$
+	)
+select $table$PK 
+from cte$table$sToDelete
+where RowNumber > 1
+
+open @del$table$Cursor
+
+declare @$table$PK int
+fetch next from @del$table$Cursor into @$table$PK
+
+while @@fetch_status = 0
+	begin
+		print 'Deleting $table$PK: ' + convert(varchar(10), @$table$PK)
+		exec spDel$table$ @$table$PK = @$table$PK -- int
+		fetch next from @del$table$Cursor into @$table$PK
+	end
+
+close @del$table$Cursor;
+deallocate @del$table$Cursor;
+
+--#endregion]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets>
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>cpcpk</Title>
+      <Shortcut>cpcpk</Shortcut>
+      <Description>CaseProgram/HVCase by HVCasePK</Description>
+      <Author />
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+    </Header>
+    <Snippet>
+      <Declarations />
+      <Code Language="sql"><![CDATA[/*
+	exec case-query-by-PK-$DATE(yyyyMMdd)$-$TIME(HHmmss)$
+*/
+use HFNY
+go
+select * 
+from CaseProgram cp
+inner join HVCase hc on hc.HVCasePK = cp.HVCaseFK
+where HVCasePK = $PASTE$$CURSOR$
+]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

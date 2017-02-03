@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets>
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>cpcwa</Title>
+      <Shortcut>cpcwa</Shortcut>
+      <Description>CaseProgram HVCase WorkerAssignment snippet</Description>
+      <Author />
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+    </Header>
+    <Snippet>
+      <Declarations />
+      <Code Language="sql"><![CDATA[/*
+	exec case-query-$DATE(yyyyMMdd)$-$TIME(HHmmss)$
+*/
+use HFNY
+go
+select * 
+from WorkerAssignment wa
+inner join CaseProgram cp on wa.HVCaseFK = cp.HVCaseFK
+inner join HVCase hc on hc.HVCasePK = cp.HVCaseFK
+where PC1ID = '$PASTE$$CURSOR$']]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>
