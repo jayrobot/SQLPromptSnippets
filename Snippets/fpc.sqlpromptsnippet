@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets>
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>fpc</Title>
+      <Shortcut>fpc</Shortcut>
+      <Description>Freeproccache of a stored procedure</Description>
+      <Author />
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+    </Header>
+    <Snippet>
+      <Declarations />
+      <Code Language="sql"><![CDATA[use HFNY;
+
+select	[text]
+	  , cp.size_in_bytes
+	  , plan_handle
+from	sys.dm_exec_cached_plans as cp
+cross apply sys.dm_exec_sql_text(plan_handle)
+where	cp.cacheobjtype = N'Compiled Plan'
+		and cp.objtype = N'Adhoc'
+		and cp.usecounts = 1
+		and [text] like '%[ENTER TEXT HERE]%'  --This is unique text inside the specific Stored Procedure you want to find
+order by cp.size_in_bytes desc;
+
+
+use HFNY;
+dbcc freeproccache([ENTER PLAN ID HERE]);]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>
