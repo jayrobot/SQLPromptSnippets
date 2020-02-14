@@ -2,9 +2,9 @@
 <CodeSnippets>
   <CodeSnippet Format="1.0.0">
     <Header>
-      <Title>st100</Title>
-      <Shortcut>st100</Shortcut>
-      <Description>SELECT top 100 rows</Description>
+      <Title>foff</Title>
+      <Shortcut>foff</Shortcut>
+      <Description>Disable formatting from this point onwards</Description>
       <Author />
       <SnippetTypes>
         <SnippetType>Expansion</SnippetType>
@@ -12,7 +12,7 @@
     </Header>
     <Snippet>
       <Declarations />
-      <Code Language="sql"><![CDATA[SELECT TOP (100) * FROM ]]></Code>
+      <Code Language="sql"><![CDATA[--SQL Prompt Formatting Off]]></Code>
     </Snippet>
   </CodeSnippet>
 </CodeSnippets>

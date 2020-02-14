@@ -23,7 +23,7 @@
           <Default />
         </Literal>
       </Declarations>
-      <Code Language="sql"><![CDATA[ALTER TABLE $table_name$ ADD [$column_name$] $SELECTIONEND$INT$SELECTIONSTART$]]></Code>
+      <Code Language="sql"><![CDATA[ALTER TABLE $table_name$ ADD [$column_name$] $SELECTIONEND$INT$SELECTIONSTART$ --NULL|NOT NULL]]></Code>
     </Snippet>
   </CodeSnippet>
 </CodeSnippets>
