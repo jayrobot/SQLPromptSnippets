@@ -2,9 +2,9 @@
 <CodeSnippets>
   <CodeSnippet Format="1.0.0">
     <Header>
-      <Title>loj</Title>
-      <Shortcut>loj</Shortcut>
-      <Description>LEFT OUTER JOIN fragment</Description>
+      <Title>hvp</Title>
+      <Shortcut>hvp</Shortcut>
+      <Description>HVProgram selected columns</Description>
       <Author />
       <SnippetTypes>
         <SnippetType>Expansion</SnippetType>
@@ -12,7 +12,12 @@
     </Header>
     <Snippet>
       <Declarations />
-      <Code Language="sql"><![CDATA[left outer join ]]></Code>
+      <Code Language="sql"><![CDATA[select HVProgramPK
+		, ProgramCode
+		, ProgramManager
+		, ProgramName
+from dbo.HVProgram
+]]></Code>
     </Snippet>
   </CodeSnippet>
 </CodeSnippets>

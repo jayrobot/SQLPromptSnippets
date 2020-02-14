@@ -15,8 +15,6 @@
       <Code Language="sql"><![CDATA[/*
 	exec DeleteCompleteCase-$DATE(yyyyMMdd)$-$TIME(HHmmss)$-$PASTE$
 */
-use HFNY
-go
 declare @PC1ID varchar(13)
 declare @HVCaseFK int
 declare @ProgramFK int

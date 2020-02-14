@@ -15,8 +15,6 @@
       <Code Language="sql"><![CDATA[/*
 	exec case-query-by-PK-$DATE(yyyyMMdd)$-$TIME(HHmmss)$
 */
-use HFNY
-go
 select * 
 from CaseProgram cp
 inner join HVCase hc on hc.HVCasePK = cp.HVCaseFK

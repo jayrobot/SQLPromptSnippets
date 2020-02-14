@@ -15,8 +15,6 @@
       <Code Language="sql"><![CDATA[/*
 	exec case-query-$DATE(yyyyMMdd)$-$TIME(HHmmss)$
 */
-use HFNY
-go
 select * 
 from Preintake pi 
 inner join CaseProgram cp on pi.HVCaseFK = cp.HVCaseFK

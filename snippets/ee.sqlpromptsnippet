@@ -2,9 +2,9 @@
 <CodeSnippets>
   <CodeSnippet Format="1.0.0">
     <Header>
-      <Title>loj</Title>
-      <Shortcut>loj</Shortcut>
-      <Description>LEFT OUTER JOIN fragment</Description>
+      <Title>ee</Title>
+      <Shortcut>ee</Shortcut>
+      <Description>Top 50 ELMAH Errors</Description>
       <Author />
       <SnippetTypes>
         <SnippetType>Expansion</SnippetType>
@@ -12,7 +12,8 @@
     </Header>
     <Snippet>
       <Declarations />
-      <Code Language="sql"><![CDATA[left outer join ]]></Code>
+      <Code Language="sql"><![CDATA[select top 50 * from ELMAH_Error ee
+order by ee.TimeUtc desc]]></Code>
     </Snippet>
   </CodeSnippet>
 </CodeSnippets>

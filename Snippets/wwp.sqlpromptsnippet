@@ -12,9 +12,7 @@
     </Header>
     <Snippet>
       <Declarations />
-      <Code Language="sql"><![CDATA[use HFNY
-go
-select *
+      <Code Language="sql"><![CDATA[select *
 from Worker w
 inner join WorkerProgram wp on w.WorkerPK = wp.WorkerFK
 where LastName = '$CURSOR$']]></Code>

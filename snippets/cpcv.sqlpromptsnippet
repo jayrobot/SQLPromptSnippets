@@ -2,9 +2,9 @@
 <CodeSnippets>
   <CodeSnippet Format="1.0.0">
     <Header>
-      <Title>cpcl</Title>
-      <Shortcut>cpcl</Shortcut>
-      <Description>CaseProgram HVCase HVLevel snippet</Description>
+      <Title>cpcv</Title>
+      <Shortcut>cpcv</Shortcut>
+      <Description>CaseProgram HVCase HVLog snippet</Description>
       <Author />
       <SnippetTypes>
         <SnippetType>Expansion</SnippetType>
@@ -15,12 +15,11 @@
       <Code Language="sql"><![CDATA[/*
 	exec case-query-$DATE(yyyyMMdd)$-$TIME(HHmmss)$
 */
-select * 
-from HVLevel hl 
-inner join CaseProgram cp on hl.HVCaseFK = cp.HVCaseFK
+select *
+from HVLog hl
+inner join CaseProgram cp on cp.HVCaseFK = hl.HVCaseFK
 inner join HVCase hc on hc.HVCasePK = cp.HVCaseFK
-where PC1ID = '$PASTE$$CURSOR$'
-]]></Code>
+where PC1ID = '$PASTE$$CURSOR$']]></Code>
     </Snippet>
   </CodeSnippet>
 </CodeSnippets>
